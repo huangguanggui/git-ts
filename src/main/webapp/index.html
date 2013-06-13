@@ -33,5 +33,18 @@
     </p>
 </script>
 
+
+    <div ng-controller="TodoController">
+    Todo list:
+        <div ng-repeat="todo in todos">
+            {{todo.content}}
+        </div>
+
+        <input type="text" ng-model="content" placeholder="Todo Content">
+        <button ng-click="add()">Add Todo</button>
+
+    </div>
+
+
 </body>
 </html>
