@@ -1,0 +1,54 @@
+.DS_Store
+
+# for client side development
+.sass-cache/
+node_modules/
+components/
+d.ts/
+
+src/test/typescript/*.js
+src/test/typescript/*.js.map
+src/test/typescript/*.d.ts
+src/test/typescript/libs/
+
+src/test/resources/typescript/data/
+
+src/main/webapp/css
+
+src/main/webapp/scripts/*.js
+src/main/webapp/scripts/**/*.js
+src/main/webapp/scripts/*.js.map
+src/main/webapp/scripts/*.d.ts
+
+# bower generated
+src/main/webapp/scripts/libs/*
+
+# tsd generated
+src/main/typescript/libs/DefinitelyTyped
+
+# testacular generated
+test-results.xml
+
+# Eclipse meta file
+.classpath
+.factorypath
+.project
+.settings/
+
+.apt_generated/
+
+# Eclipse libs
+eclipse.lib/
+
+# WebStorm meta file
+.idea/
+
+# generated file
+src/main/webapp/WEB-INF/appengine-generated/
+target/
+src/main/webapp/WEB-INF/classes/
+www-test/
+
+# for deploy
+src/main/webapp/WEB-INF/lib/
+
