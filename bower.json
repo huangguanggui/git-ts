@@ -1,0 +1,11 @@
+{
+    "name": "gae-standards",
+    "version": "0.0.0",
+    "dependencies": {
+        "jquery": "1.9.1",
+        "angular": "1.0.6",
+
+        "jasmine" : "1.2.0",
+        "angular-mocks": "1.0.7"
+    }
+}
