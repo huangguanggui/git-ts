@@ -11,11 +11,11 @@ module Model {
 		 * @constructor
 		 * @param data JSONObjectまたはJSON文字列
 		 */
-			constructor(data) {
-			if (angular.isString(data)) {
-				data = angular.fromJson(data);
-			}
-			this.test = data.test;
+			constructor() {
+			//if (angular.isString(data)) {
+				//data = angular.fromJson(data);
+			//}
+			//this.test = data.test;
 		}
 	}
 

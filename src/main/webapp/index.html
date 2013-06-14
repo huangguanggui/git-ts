@@ -26,24 +26,33 @@
     </div>
 </script>
 
-<script type="text/ng-template" id="/template/main.html">
+<!--<script type="text/ng-template" id="/template/main.html">
     <p>
         メインです。<br>
         <a ng-href="/sample">サンプル</a>
     </p>
 </script>
-
+-->
 
     <div ng-controller="TodoController">
+        <input type="text" ng-model="content">
+        <button ng-click="add()">Add Todo</button>
+        <br>
     Todo list:
         <div ng-repeat="todo in todos">
-            {{todo.content}}
+
+            <button ng-click="remove($index)">Remove</button>
+            <button ng-click="modify($index)">modify</button>
+            <button ng-click="edit($index)">edit</button>
+            {{$index + 1}}:{{todo.content}}
+
         </div>
 
-        <input type="text" ng-model="content" placeholder="Todo Content">
-        <button ng-click="add()">Add Todo</button>
+
+
 
     </div>
+
 
 
 </body>
