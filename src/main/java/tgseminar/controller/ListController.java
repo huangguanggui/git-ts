@@ -41,15 +41,29 @@ public class ListController extends Controller {
 		System.out.println("list.size="+list.size());
 
 
+		response.getWriter().println("[");
 		
+		boolean isFirst = true;
 		for(Entity e : list)
 		{	
 			JSONObject json = new JSONObject();
 			json.put("id",e.getKey().getId());
 			json.put("title", e.getProperty("title"));
 			json.put("createAt", e.getProperty("createAt"));
+			
+			if(isFirst)
+			{
+				isFirst = false;
+			}
+			else
+			{
+				response.getWriter().println(",");
+			}
 			response.getWriter().println( json.valueToString(json));
+			
 		}
+		response.getWriter().println("]");
+		
 		response.setStatus(200);
 		response.flushBuffer();
 		

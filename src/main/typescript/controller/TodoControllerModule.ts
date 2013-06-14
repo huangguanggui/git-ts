@@ -1,7 +1,7 @@
 ///<reference path='../libs/DefinitelyTyped/angularjs/angular.d.ts' />
 
 ///<reference path='../Model.ts' />
-
+///<reference path='../Service.ts' />
 
 module Todo{
 
@@ -14,14 +14,12 @@ module Todo{
         remove:(index:number) => void;
 
         modify:(index:number) => void;
-        edit:(index:number) => void;
         w:Window;
     }
 
     export class Controller{
-        constructor(public $scope:Scope,public $window:Window){
+        constructor(public $scope:Scope,public $window:Window,public todoService:Service.TodoService){
             this.$scope.todos = [
-                new Model.Todo("Hello todo!")
             ];
 
             this.$scope.w = $window;
@@ -29,8 +27,10 @@ module Todo{
             this.$scope.add = () => this.add();
             this.$scope.remove = (index:number) => this.remove(index);
             this.$scope.modify = (index:number) => this.modify(index);
-            this.$scope.edit = (index:number) => this.edit(index);
 
+            this.todoService.getList().success((todos:Model.Todo[])=>{
+                this.$scope.todos = todos;
+            });
         }
 
 
@@ -44,17 +44,11 @@ module Todo{
 
         modify(index:number){
 
-            this.$scope.newcontent = this.$scope.w.prompt("",this.$scope.todos[index].content);
+            this.$scope.newcontent = this.$scope.w.prompt("",this.$scope.todos[index].title);
             if(this.$scope.newcontent != null)
-                this.$scope.todos[index].content = this.$scope.newcontent;
+                this.$scope.todos[index].title = this.$scope.newcontent;
         };
 
-        edit(index:number){
-
-            this.$scope.newcontent = this.$scope.w.prompt("",this.$scope.todos[index].content);
-            if(this.$scope.newcontent != null)
-                this.$scope.todos[index].content = this.$scope.newcontent;
-        };
 
     }
 

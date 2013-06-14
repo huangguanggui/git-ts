@@ -24,7 +24,16 @@ module Model {
      * 1件TODOを表すクラス
      * */
     export class Todo{
-        constructor(public content:string = "Unknown"){
+        id:number;
+        title:string;
+        createAt:number;
+
+//        constructor(public content:string = "Unknown"){
+//        }
+        constructor(data:any){
+            this.id = data.id;
+            this.title = data.title;
+            this.createAt = data.createAt;
         }
     }
 }

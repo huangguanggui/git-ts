@@ -54,6 +54,11 @@ public class UpdateController extends Controller {
 			return null;
 		}
 		
+		entity.setProperty("title", title);
+		Datastore.put(entity);
+		
+		response.setStatus(200);
+		
 		return null;
 	}
 

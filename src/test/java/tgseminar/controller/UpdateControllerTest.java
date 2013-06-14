@@ -70,6 +70,17 @@ public class UpdateControllerTest extends ControllerTestCase {
 		
 		assertThat(tester.response.getStatus(),is(404));
 	}
+	
+	@Test
+	public void respond200() throws NullPointerException, IllegalArgumentException, IOException, ServletException{
+
+//		tester.param("id", 1);
+//		tester.param("title", "To-Do #1111");
+//		tester.start("/Update");
+//		
+//		
+//		assertThat(tester.response.getStatus(),is(200));
+	}
 
 	@Override
 	public void setUp() throws Exception {
