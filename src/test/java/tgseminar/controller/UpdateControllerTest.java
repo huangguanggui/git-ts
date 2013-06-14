@@ -9,8 +9,10 @@ import org.junit.Before;
 import org.junit.Test;
 import org.slim3.datastore.Datastore;
 import org.slim3.tester.ControllerTestCase;
+import org.slim3.tester.TestEnvironment;
 
 import com.google.appengine.api.datastore.Entity;
+import com.google.apphosting.api.ApiProxy;
 
 import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
@@ -47,10 +49,23 @@ public class UpdateControllerTest extends ControllerTestCase {
 		assertThat(tester.response.getStatus(),is(400));
 	}
 	@Test
-	public void respond400IfEntityNotExist() throws NullPointerException, IllegalArgumentException, IOException, ServletException{
+	public void respond404IfEntityNotExist() throws NullPointerException, IllegalArgumentException, IOException, ServletException{
 		tester.param("id", 3);
 		tester.param("title", "To-Do #3");
 		
+		tester.start("/Update");
+		
+		assertThat(tester.response.getStatus(),is(404));
+	}
+	
+	@Test
+	public void respond404IfEmailIsNotCurrentUser() throws NullPointerException, IllegalArgumentException, IOException, ServletException{
+		
+		Entity entity = Datastore.getOrNull(Datastore.createKey("ToDo", 1));
+		assertThat("pre-condition",entity,is(notNullValue()));
+		
+		tester.param("id", 1);
+		tester.param("title", "To-Do #1");
 		tester.start("/Update");
 		
 		assertThat(tester.response.getStatus(),is(404));
@@ -69,6 +84,9 @@ public class UpdateControllerTest extends ControllerTestCase {
 		entity2.setProperty("createAt", new Date());
 		
 		Datastore.put(entity1,entity2);
+		
+		TestEnvironment env = (TestEnvironment)ApiProxy.getCurrentEnvironment();
+		env.setEmail("aaa@gmail.com");
 	}
 	
 	
