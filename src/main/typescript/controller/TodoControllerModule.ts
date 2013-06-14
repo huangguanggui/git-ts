@@ -35,7 +35,7 @@ module Todo{
 
 
         add(){
-            this.$scope.todos.push(new Model.Todo(this.$scope.content));
+            this.$scope.todos.push(new Model.Todo({title:this.$scope.content}));
         };
 
         remove(index:number){

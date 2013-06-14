@@ -28,5 +28,23 @@ module Service {
             };
             return wrapped;
         }
+//
+//        Post(data):ng.IHttpPromise {
+//            var promise = this.$http.put("/Post",da);
+//            var wrapped:ng.IHttpPromise = {
+//                success: (callback) => {
+//                    promise.success((data, status, headers, config) => {
+//                        var resultList:Model.Todo[] = [];
+//                        data.forEach((data)=> {
+//                            resultList.push(new Model.Todo(data));
+//                        });
+//                        callback(resultList, status, headers, config);
+//                    });
+//                },
+//                error: promise.error,
+//                then: promise.then
+//            };
+//            return wrapped;
+//        }
     }
 }
